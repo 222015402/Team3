@@ -1,4 +1,13 @@
-﻿'Set up options statements
+﻿' *****************************************************************
+' Team Number: 3
+' Team Member 1 Details: Masimba, RT (222015402)
+' Team Member 2 Details: Ndlovu, LF (221078299)
+' Team Member 3 Details: Hoaeane, K (218105185)
+' Team Member 4 Details: Sondezi, N (218000317)
+' Practical: Team Project
+' Class name: (FrmGenderEqualityIndex)
+' *****************************************************************
+'Set up options statements
 
 Option Strict On
 Option Explicit On
@@ -9,8 +18,6 @@ Public Class FrmGenderEqualityIndex
     'start declaring variables
 
     Private Departments() As Department
-    Private nDepartments As Integer
-    Private departmentname As String
     Private numfemales, nummales, total As Integer
 
     'set up a subroutine .
@@ -42,9 +49,11 @@ Public Class FrmGenderEqualityIndex
         For f As Integer = 1 To numfemales
             ename = InputBox("Enter name for female employee " + CStr(f))
             eage = CInt(InputBox("Enter age for " + ename))
-            If eage < 18 Then
+
+            While eage < 18 'for user to input valid age for an employee 
                 MsgBox("The person is too young")
-            End If
+                eage = CInt(InputBox("Enter valid age for " + ename))
+            End While
             Departments(Departments.Length - 1).addEmployee(ename, egender, eage, f)
         Next f
 
@@ -53,9 +62,11 @@ Public Class FrmGenderEqualityIndex
         For m As Integer = 1 To nummales
             ename = InputBox("Enter name for male employee " + CStr(m))
             eage = CInt(InputBox("Enter age for " + ename))
-            If eage < 18 Then
+
+            While eage < 18 'for user to input valid age for an employee 
                 MsgBox("The person is too young")
-            End If
+                eage = CInt(InputBox("Enter valid age for " + ename))
+            End While
             Departments(Departments.Length - 1).addEmployee(ename, egender, eage, m)
         Next m
 
@@ -90,10 +101,12 @@ Public Class FrmGenderEqualityIndex
         egender = "female"
         For f As Integer = 1 To numfemales
             ename = InputBox("Enter name for female employee " + CStr(f))
-            eage = CInt(InputBox("Enter age for " + ename))
-            If eage < 18 Then
+            eage = CInt(InputBox("Enter valid age for " + ename))
+
+            While eage < 18 'for user to input valid age for an employee 
                 MsgBox("The person is too young")
-            End If
+                eage = CInt(InputBox("Enter valid age for " + ename))
+            End While
             Departments(Departments.Length - 1).addEmployee(ename, egender, eage, f)
         Next f
 
@@ -102,15 +115,16 @@ Public Class FrmGenderEqualityIndex
         For m As Integer = 1 To nummales
             ename = InputBox("Enter name for male employee " + CStr(m))
             eage = CInt(InputBox("Enter age for " + ename))
-            If eage < 18 Then
+
+            While eage < 18 'for user to input valid age for an employee 
                 MsgBox("The person is too young")
-            End If
+                eage = CInt(InputBox("Enter valid age for " + ename))
+            End While
             Departments(Departments.Length - 1).addEmployee(ename, egender, eage, m)
         Next m
 
         'check if 1st dept
         checkFirst()
-
         'clear text boxes
         ClearText()
 
@@ -120,7 +134,8 @@ Public Class FrmGenderEqualityIndex
     Public Sub checkFirst()
         If Departments.Length = 2 Then
             txtdNum.Text = CStr(Departments.Length - 1)
-            txtdName.Text = name
+            txtdName.Text = Name
+            'polymorphism statements
             txtdEquality.Text = Departments(Departments.Length - 1).CalcEquality
             txtdMessage.Text = Departments(Departments.Length - 1).DetermineMsg
         End If
@@ -148,9 +163,11 @@ Public Class FrmGenderEqualityIndex
     Public Sub DisplayDept(index As Integer)
         txtdNum.Text = CStr(index)
         txtdName.Text = Departments(index).Name
+        'polymorphism statements
         txtdEquality.Text = Departments(index).CalcEquality
         txtdMessage.Text = Departments(index).DetermineMsg
     End Sub
+
     'sub to clear text
     Public Sub ClearText()
         txtnName.Clear()

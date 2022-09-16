@@ -1,4 +1,13 @@
-﻿'Set up options statements
+﻿' *****************************************************************
+' Team Number: 3
+' Team Member 1 Details: Masimba, RT (222015402)
+' Team Member 2 Details: Ndlovu, LF (221078299)
+' Team Member 3 Details: Hoaeane, K (218105185)
+' Team Member 4 Details: Sondezi, N (218000317)
+' Practical: Team Project
+' Class name: (NonStem)
+' *****************************************************************
+'Set up options statements
 
 Option Strict On
 Option Explicit On
@@ -48,7 +57,6 @@ Public Class NonStem
         Else
             _Equality = "No"
         End If
-
         Return _Equality
     End Function
 
